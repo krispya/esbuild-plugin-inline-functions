@@ -1,4 +1,4 @@
-A plugin for [esbuild](https://github.com/evanw/esbuild) that adds support for inlining functions with transpiler hints. C++ has function specifiers and now TS has `esbuild-plugin-inline-functions`.
+A plugin for [esbuild](https://github.com/evanw/esbuild) that adds support for inlining functions with transpiler hints. C++ has function specifiers and now JS has `esbuild-plugin-inline-functions`.
 
 ```bash
 npm i esbuild-plugin-inline-functions
