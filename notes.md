@@ -1,11 +1,3 @@
-I wanted to try replacing traitData with a two dimensional array, but it appears it would make the cost of the `has` call to increase which is currently called quite a bit.
-
-Let's investigate this further.
-
-Loks like this could indeed work out. I think let's do the inlining first and then look at optimizing this data access.
-
-Though it is uncertain how much any of this matters lol.
-
 ```js
 function hasTrait(world: World, entity: Entity, trait: Trait): boolean {
 	const ctx = world[$internal];
