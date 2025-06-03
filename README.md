@@ -160,12 +160,12 @@ function displayUserInfo(userId) {
 
 ## But why? 
 
-Function calls have a cost. It creates a new scope, allocates memory and then needs to be garbage collected. If you are doing performance critical code like a video game then every millisecond matters and these papercuts can add up. Manually inlining can come with performance benefits but DX is sacrificed. The same function gets copied multiple places and it generally makes the codebase harder for people to read and contribute to. This allows you to get the best of both worlds.
+Function calls have a cost. They create a new scope, allocate memory and then need to be garbage collected. If you are doing performance critical code like a video game then every millisecond matters and these papercuts can add up. Manually inlining can come with performance benefits but DX is sacrificed. The same function gets copied multiple places and it generally makes the codebase harder for people to read and contribute to. This plugin allows you to get the best of both worlds.
 
 ### Doesn't the VM do this automatically?
 
-Sometimes! The VMs do an amazing job of optimizing code but ultimately the VM only knows your app one code block at a time and attempts to discover optimizations it make with built in heuristics. We have the advantage of knowing our own codebase and its hot paths ahead of time so we can help the VM out. We do this by transpiling code to be pre-optimized for the VM. This means instead of hoping the VM's heuristics decide a function is safe to inline, we do it ourselves and the VM has fewer decisions to make.
+Sometimes! VMs do an amazing job of optimizing code but ultimately the VM only knows your app one code block at a time and attempts to discover optimizations with built in heuristics. We have the advantage of knowing our own codebase and its hot paths ahead of time so we can help the VM out. We do this by transpiling code to be pre-optimized for the VM. This means instead of hoping the VM's heuristics decide a function is safe to inline, we do it ourselves and the VM has fewer decisions to make.
 
 ## What's next?
 
-This is an experiment I created while I was at the [Recurse Center](https://www.recurse.com/) that turned out more successful than I expected. I have since integrated it into [Koota](https://github.com/pmndrs/koota) where its features are being put to the test. I plan to extract this out into a Babel plugin and make it available for dev as well as production with a Vite plugin. I then will look at extending to include more optimization hints.
+This is an experiment I created while I was at the [Recurse Center](https://www.recurse.com/) that turned out more successful than I expected. I have since integrated it into [Koota](https://github.com/pmndrs/koota) where its features are being put to the test. I plan to extract this out into a Babel plugin and make it available for dev as well as production with a Vite plugin. I may look into add other hints oriented at optimizing performance.
