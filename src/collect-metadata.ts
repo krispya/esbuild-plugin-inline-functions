@@ -10,11 +10,7 @@ import {
 	isIdentifier,
 	VariableDeclarator,
 } from '@babel/types';
-import {
-	collectDependencyChain,
-	collectLocalDependencies,
-	getFunctionLocalDeps,
-} from './utils/collect-local-dependencies';
+import { collectDependencyChain, collectLocalDependencies } from './utils/collect-local-dependencies';
 import { hasInlineDecorator, hasPureDecorator } from './utils/decorator-utils';
 import { getFunctionParams } from './utils/get-function-params';
 
