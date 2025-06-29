@@ -64,6 +64,26 @@ export function inlineFunctions(ast: ParseResult<File>) {
 			// Only support named function calls -- ie not methods or accessors.
 			if (!isIdentifier(callee)) return;
 
+			// Add /*#__PURE__*/ flags to calls of pure functions (before inlining logic)
+			if (pureFunctions.has(callee.name)) {
+				// Add /*#__PURE__*/ comment before the call
+				if (!path.node.leadingComments) {
+					path.node.leadingComments = [];
+				}
+
+				// Check if it already has the PURE comment to avoid duplicates
+				const hasPureComment = path.node.leadingComments.some((comment) =>
+					comment.value.includes('@__PURE__')
+				);
+
+				if (!hasPureComment) {
+					path.node.leadingComments.unshift({
+						type: 'CommentBlock',
+						value: '@__PURE__',
+					});
+				}
+			}
+
 			let inlinableFn: InlinableFunction | undefined;
 
 			if (inlinableFunctions.has(callee.name)) {
