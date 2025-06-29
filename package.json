@@ -1,6 +1,6 @@
 {
 	"name": "esbuild-plugin-inline-functions",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Esbuild plugin to inline functions in your code.",
 	"license": "ISC",
 	"type": "module",
